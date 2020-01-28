@@ -46,7 +46,7 @@ class LightsensorTest(unittest.TestCase):
 		### check callback function use from 1 to 4 ###
 		self.assertTure(self.count < c_prev + 4,"freq does not change")
 
-if __name__ '__main__':
+if __name__ == '__main__':
 	time.sleep(3)
 	rospy.init_node('travis_test_lightsensors')
 	rostest.rosrun('pimouse_ros','travis_test_lightsensors',LightsensorTest)			
