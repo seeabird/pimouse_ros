@@ -35,6 +35,9 @@ class Motor():
 			     open("/dev/rtmotor_raw_r0",'w') as rf:
 				lf.write(str(int(round(left_hz))) + "\n")
 				rf.write(str(int(round(right_hz))) + "\n")
+				print('left_hz' + str(int(round(left_hz))) + "\n")
+				print('right_hz' + str(int(round(right_hz))) + "\n")
+				
 		except:
 			rospy.logerr("cannot write to rtmotor_raw_*")
 

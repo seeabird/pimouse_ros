@@ -23,7 +23,7 @@ class MotorTest(unittest.TestCase):
 		for i in range(10):
 			pub.publish(m)
 			time.sleep(0.1)
-			print 'pub.publish(m)'
+			print 'test_put_freq pub.publish(m)'
 
 		self.file_check("rtmotor_raw_l0", m.left_hz, "wrong left value from motor_raw")
 		self.file_check("rtmotor_raw_r0", m.right_hz, "wrong right value from motor_raw")
@@ -36,6 +36,7 @@ class MotorTest(unittest.TestCase):
 		for i in range(10):
 			pub.publish(m)
 			time.sleep(0.1)
+			print 'test_put_cmd_vel pub.publish(m)'
 
 		self.file_check("rtmotor_raw_l0",200,"wrong left value from cmd_vel")
 		self.file_check("rtmotor_raw_r0",600,"wrong right value from cmd_vel")
