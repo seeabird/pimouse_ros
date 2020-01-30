@@ -23,6 +23,10 @@ class MotorTest(unittest.TestCase):
 		self.assertIn('/motors', nodes, "node does not exitst")
 	
 	def test_put_freq(self):
+		on = rospy.ServiceProxy('/motor_on', Trigger)
+                ret = on()
+		time.sleep(1.0)
+		
 		pub = rospy.Publisher('/motor_raw', MotorFreqs)
 		m = MotorFreqs()
 		m.left_hz = 500
@@ -31,12 +35,10 @@ class MotorTest(unittest.TestCase):
 			pub.publish(m)
 			time.sleep(0.1)
 			print 'test_put_freq pub.publish(m)'
+		self.file_check("rtmotor_raw_l0",m.left_hz,"wrong left value from motor_raw")
+		self.file_check("rtmotor_raw_r0",m.right_hz,"wrong right value from motor_raw")
 
-	'''
-		self.file_check("rtmotor_raw_l0", m.left_hz, "wrong left value from motor_raw")
-		self.file_check("rtmotor_raw_r0", m.right_hz, "wrong right value from motor_raw")
-	'''
-	
+	'''	
 	def test_put_cmd_vel(self):
 		pub = rospy.Publisher('/cmd_vel', Twist)
 		m = Twist()
@@ -53,7 +55,7 @@ class MotorTest(unittest.TestCase):
 		time.sleep(1.1)
 		self.file_check("rtmotor_raw_r0",0, "don't stop after 1[s]")
 		self.file_check("rtmotor_raw_l0",0, "don't stop after 1[s]")
-
+	'''
 	def test_off(self):
 		off = rospy.ServiceProxy('/motor_off', Trigger)
 		ret = off()
