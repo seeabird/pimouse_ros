@@ -7,10 +7,11 @@ from std_msgs.msg import UInt16
 from pimouse_ros.msg import MusicAction, MusicResult, MusicFeedback, MusicGoal
 
 class BuzzerTest(unittest.TestCase):
+	'''
 	def SetUp(self):
 		self.client = actionlib.SimpleActionClient("music", MusicAction)
 		self.device_values = []
-
+	'''
 	def test_node_exist(self):
 		nodes = rosnode.get_node_names()
 		self.assertIn('/buzzer',nodes, "node does not exist")
@@ -26,6 +27,9 @@ class BuzzerTest(unittest.TestCase):
 			self.assertEqual(data,"1234\n","value does not written to rtbuzzer0")
 
 	def test_music(self):
+                self.client = actionlib.SimpleActionClient("music", MusicAction)
+                self.device_values = []
+
 		goal = MusicGoal()
 		goal.freqs = [100, 200, 300, 0]
 		goal.durations = [2,2,2,2]
