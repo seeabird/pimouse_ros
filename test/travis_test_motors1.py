@@ -63,7 +63,7 @@ class MotorTest(unittest.TestCase):
 			self.assertEqual(data,"0\n","wrong value in rtmotor0 at motor off")
 
 	def test_on(self):	
-		on = rospy.ServiceProxy('/motor_off', Trigger)
+		on = rospy.ServiceProxy('/motor_on', Trigger)
 		ret = on()
 		self.assertEqual(ret.success, True, "motor on does not succeeded")
 		self.assertEqual(ret.message, "ON", "motor on wrong message")
