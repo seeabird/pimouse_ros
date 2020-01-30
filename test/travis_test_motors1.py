@@ -21,7 +21,7 @@ class MotorTest(unittest.TestCase):
 	def test_node_exist(self):
 		nodes = rosnode.get_node_names()
 		self.assertIn('/motors', nodes, "node does not exitst")
-	'''	
+	
 	def test_put_freq(self):
 		pub = rospy.Publisher('/motor_raw', MotorFreqs)
 		m = MotorFreqs()
@@ -32,6 +32,7 @@ class MotorTest(unittest.TestCase):
 			time.sleep(0.1)
 			print 'test_put_freq pub.publish(m)'
 
+	'''
 		self.file_check("rtmotor_raw_l0", m.left_hz, "wrong left value from motor_raw")
 		self.file_check("rtmotor_raw_r0", m.right_hz, "wrong right value from motor_raw")
 	'''
